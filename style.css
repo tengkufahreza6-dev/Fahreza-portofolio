@@ -92,6 +92,14 @@ article h3 {
     color: #4e342e;
 }
 
+/* Garis hiasan untuk elemen penting */
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #a1887f, rgba(0, 0, 0, 0));
+    margin: 20px 0;
+}
+
 /* Media Query untuk layar HP */
 @media (max-width: 600px) {
     .container {
