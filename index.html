@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio T.Fahreza</title>
     <link rel="stylesheet" href="style.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -12,21 +13,25 @@
 </head>
 <body>
     <div class="container">
+        <button id="mode-toggle" title="Toggle Dark/Light Mode">
+            <i class="fas fa-moon"></i>
+        </button>
+
         <header>
-            <img src="gambar-profil-fahreza.jpg" alt="Foto Wajah T.Fahreza" class="profile-picture">
-            <h1>Halo, Saya T.Fahreza</h1>
+            <img src="gambar-profil-fahreza.jpg" alt="Foto Wajah T.Fahreza" class="profile-picture" id="profile-picture" onerror="this.onerror=null; this.src='https://placehold.co/150x150/8d6e63/ffffff?text=TF'">
+            <h1>Halo, Saya <span id="typing-text"></span></h1>
             <p>Seorang mahasiswa baru di Universitas Negeri Medan yang bersemangat di bidang Ilmu Komputer.</p>
         </header>
 
         <section id="about">
-            <h2><i class="fas fa-user-circle"></i> Tentang Saya</h2>
+            <h2><i class="fas fa-user-circle icon-header"></i> Tentang Saya</h2>
             <p>Saat ini saya adalah seorang mahasiswa Ilmu Komputer di Universitas Negeri Medan, bersemangat untuk mendalami dasar-dasar teknologi. Di luar kegiatan akademik, saya memiliki ketertarikan besar pada musik, game, dan membaca. Hobi ini bukan hanya sekadar hiburan, tetapi juga sarana untuk mengasah keterampilan. Misalnya, melalui editing musik, saya belajar tentang ketelitian dan kreativitas. Sedangkan bermain game membantu saya meningkatkan kemampuan pemecahan masalah (problem-solving), kolaborasi tim,dan strategi perencanaan dalam kondisi dinamis. Saya percaya perpaduan antara minat dan ilmu ini membentuk saya menjadi individu yang adaptif dan berpikiran inovatif, dengan semangat belajar tinggi dan selalu siap menghadapi tantangan baru.</p>
         </section>
         
         <hr>
 
-        <section id="education">
-            <h2><i class="fas fa-graduation-cap"></i> Pendidikan</h2>
+        <section id="education" class="collapsible-group">
+            <h2><i class="fas fa-graduation-cap icon-header"></i> Pendidikan</h2>
             <article>
                 <h3>SDN 105381 Tambak Cekur</h3>
                 <p>Angkatan Tahun 2013 - 2019</p>
@@ -47,25 +52,33 @@
 
         <hr>
 
-        <section id="organization">
-            <h2><i class="fas fa-users"></i> Pengalaman Organisasi</h2>
+        <section id="organization" class="collapsible-group">
+            <h2><i class="fas fa-users icon-header"></i> Pengalaman Organisasi</h2>
             <article>
                 <h3>Organisasi Siswa Intra Sekolah (OSIS) SMAN 1 SERBAJADI</h3>
-                <p>Mendapat kepercayaan sebagai anggota dari kelas 10, lalu naik menjadi Wakil Ketua I di kelas 11. Saat kelas 12, Saya bertanggung jawab sebagai koordinator sesi Ketakwaan kepada Tuhan Yang Maha Esa dan menjadi penanggung jawab dalam kepanitiaan setiap event lomba antarkelas. Perjalanan karier organisasi saya, dari anggota hingga ke posisi kepemimpinan, melatih saya dalam kepemimpinan, delegasi tugas, dan manajemen konflik. Sebagai penanggung jawab, saya terlatih dalam perencanaan strategis, negosiasi, dan manajemen waktu untuk memastikan setiap acara berjalan lancar dan tepat waktu. Selain itu, tanggung jawab mengkoordinasi sesi ketakwaan juga mengasah kecerdasan emosional dan kemampuan public speaking saya.</p>
-                <p><a href="SK OSIS 2024-2025.pdf" target="_blank">Lihat SK OSIS (PDF)</a></p>
+                <div class="collapsible-content">
+                    <p>Mendapat kepercayaan sebagai anggota dari kelas 10, lalu naik menjadi Wakil Ketua I di kelas 11. Saat kelas 12, Saya bertanggung jawab sebagai koordinator sesi Ketakwaan kepada Tuhan Yang Maha Esa dan menjadi penanggung jawab dalam kepanitiaan setiap event lomba antarkelas. Perjalanan karier organisasi saya, dari anggota hingga ke posisi kepemimpinan, melatih saya dalam kepemimpinan, delegasi tugas, dan manajemen konflik. Sebagai penanggung jawab, saya terlatih dalam perencanaan strategis, negosiasi, dan manajemen waktu untuk memastikan setiap acara berjalan lancar dan tepat waktu. Selain itu, tanggung jawab mengkoordinasi sesi ketakwaan juga mengasah kecerdasan emosional dan kemampuan public speaking saya.</p>
+                    <p><a href="SK OSIS 2024-2025.pdf" target="_blank">Lihat SK OSIS (PDF)</a></p>
+                </div>
             </article>
         </section>
 
         <hr>
 
         <section id="skills">
-            <h2><i class="fas fa-tools"></i> Keahlian</h2>
+            <h2><i class="fas fa-tools icon-header"></i> Keahlian</h2>
             <h3>Hardskill (Teknis)</h3>
-            <ul>
-                <li><i class="fas fa-palette"></i> **Desain & Foto:** Canva, photoroom, Background Remover, photo & picture resizer, Picskit.</li>
-                <li><i class="fas fa-video"></i> **Editing Video & Audio:** Visual Video Code, MP3 cut & Ringtones maker, Video compressor, Kompresor audio, GIF maker, CapCut (dasar).</li>
-                <li><i class="fas fa-star"></i> **Produktivitas:** Microsoft Office (Word, PowerPoint, Excel).</li>
-            </ul>
+            <div class="skill-bar-container">
+                <p><i class="fas fa-palette"></i> Desain & Foto (Canva, Photoscape, dll.)</p>
+                <div class="skill-bar"><div class="skill-level" style="width: 70%;" data-level="70%"></div></div>
+
+                <p><i class="fas fa-video"></i> Editing Video & Audio (CapCut Dasar, MP3 Cut)</p>
+                <div class="skill-bar"><div class="skill-level" style="width: 65%;" data-level="65%"></div></div>
+                
+                <p><i class="fas fa-star"></i> Produktivitas (Ms. Office)</p>
+                <div class="skill-bar"><div class="skill-level" style="width: 60%;" data-level="60%"></div></div>
+            </div>
+            
             <br>
             <h3>Softskill (Interpersonal)</h3>
             <ul>
@@ -79,63 +92,97 @@
         
         <hr>
 
-        <section id="certifications">
-            <h2><i class="fas fa-award"></i> Sertifikasi & Pencapaian</h2>
+        <section id="certifications" class="collapsible-group">
+            <h2><i class="fas fa-award icon-header"></i> Sertifikasi & Pencapaian</h2>
             <article>
                 <h3>Juara 1 Kelas XI IPS 3 2024 - SMAN 1 SERBAJADI</h3>
-                <p>Pencapaian prestasi akademik yang menjadi strategi dan etos belajar untuk terus maju. Pencapaian ini membuktikan ketekunan, disiplin belajar, dan kemampuan mengatur waktu yang efektif dalam menyeimbangkan akademik dengan kegiatan organisasi</p>
-                <p><a href="sertifikat-juara-kelas.pdf" target="_blank">Lihat Sertifikat (PDF)</a></p>
+                <div class="collapsible-content">
+                    <p>Pencapaian prestasi akademik yang menjadi strategi dan etos belajar untuk terus maju. Pencapaian ini membuktikan ketekunan, disiplin belajar, dan kemampuan mengatur waktu yang efektif dalam menyeimbangkan akademik dengan kegiatan organisasi</p>
+                    <p><a href="sertifikat-juara-kelas.pdf" target="_blank">Lihat Sertifikat (PDF)</a></p>
+                </div>
             </article>
             <article>
                 <h3>Pondok Remaja Dambaan 2023 Angkatan IV</h3>
-                <p>Kegiatan keagamaan di bulan Ramadhan untuk pengalaman belajar dan pendalaman ilmu keislaman dalam rangka mengisi kegiatan di bulan Ramadhan 1444H dengan hal-hal bermanfaat.</p>
-                <p><a href="sertifikat-remaja-dambaan.pdf" target="_blank">Lihat Sertifikat (PDF)</a></p>
+                <div class="collapsible-content">
+                    <p>Kegiatan keagamaan di bulan Ramadhan untuk pengalaman belajar dan pendalaman ilmu keislaman dalam rangka mengisi kegiatan di bulan Ramadhan 1444H dengan hal-hal bermanfaat.</p>
+                    <p><a href="sertifikat-remaja-dambaan.pdf" target="_blank">Lihat Sertifikat (PDF)</a></p>
+                </div>
             </article>
             <article>
                 <h3>Olimpiade Sains Nasional Kabupaten/Kota 2023 (OSN-K)</h3>
-                <p>Sebuah ajang untuk mengembangkan talenta di bidang sains dan teknologi. Kompetisi ini mengasah berpikir analitis, kecepatan menyelesaikan masalah kompleks, dan ketahanan mental di bawah tekanan waktu</p>
-                <p><a href="sertifikat-osn.pdf" target="_blank">Lihat Sertifikat (PDF)</a></p>
+                <div class="collapsible-content">
+                    <p>Sebuah ajang untuk mengembangkan talenta di bidang sains dan teknologi. Kompetisi ini mengasah berpikir analitis, kecepatan menyelesaikan masalah kompleks, dan ketahanan mental di bawah tekanan waktu</p>
+                    <p><a href="sertifikat-osn.pdf" target="_blank">Lihat Sertifikat (PDF)</a></p>
+                </div>
             </article>
         </section>
         
         <hr>
 
-        <section id="projects">
-            <h2><i class="fas fa-folder-open"></i> Proyek</h2>
+        <section id="projects" class="collapsible-group">
+            <h2><i class="fas fa-folder-open icon-header"></i> Proyek</h2>
             <article>
                 <h3>Evaluasi Pelaksanaan Program Pemberdayaan Komunitas Adat Terpencil</h3>
-                <p>Sebuah laporan evaluasi mengenai pelaksanaan program pemberdayaan komunitas adat di Desa Tambak Cekur, Serdang Bedagai. Proyek ini mengasah kemampuan riset lapangan, analisis data kualitatif, dan berpikir kritis dalam mengevaluasi efektivitas program. Saya juga terlatih dalam komunikasi interpersonal saat mewawancarai masyarakat, serta mampu menyusun laporan yang sistematis untuk pemangku kepentingan.</p>
-                <p><a href="evaluasi-pelaksanaan-program-pemberdayaan.pdf" target="_blank">Lihat Laporan Lengkap (PDF)</a></p>
+                <div class="collapsible-content">
+                    <p>Sebuah laporan evaluasi mengenai pelaksanaan program pemberdayaan komunitas adat di Desa Tambak Cekur, Serdang Bedagai. Proyek ini mengasah kemampuan riset lapangan, analisis data kualitatif, dan berpikir kritis dalam mengevaluasi efektivitas program. Saya juga terlatih dalam komunikasi interpersonal saat mewawancarai masyarakat, serta mampu menyusun laporan yang sistematis untuk pemangku kepentingan.</p>
+                    <p><a href="evaluasi-pelaksanaan-program-pemberdayaan.pdf" target="_blank">Lihat Laporan Lengkap (PDF)</a></p>
+                </div>
             </article>
             <article>
                 <h3>Tugas Praktik Geografi: Sistem Informasi Geografis (SIG)</h3>
-                <p>Sebuah laporan tugas tentang konsep dasar Sistem Informasi Geografis (SIG). Proyek ini menunjukkan pemahaman tentang data spasial dan atribut, model data, serta berbagai jenis peta.</p>
-                <p><a href="BAB II. Sistem Informasi Geografi.pdf" target="_blank">Lihat Laporan Lengkap (PDF)</a></p>
+                <div class="collapsible-content">
+                    <p>Sebuah laporan tugas tentang konsep dasar Sistem Informasi Geografis (SIG). Proyek ini menunjukkan pemahaman tentang data spasial dan atribut, model data, serta berbagai jenis peta.</p>
+                    <p><a href="BAB II. Sistem Informasi Geografi.pdf" target="_blank">Lihat Laporan Lengkap (PDF)</a></p>
+                </div>
             </article>
             <article>
                 <h3>Refleksi Kepemimpinan</h3>
-                <p>Sebuah esai refleksi pribadi mengenai transformasi pandangan terhadap kepemimpinan, membahas konsep empati, etika, dan komunikasi efektif dalam mempengaruhi tim. Esai ini merefleksikan perkembangan kecerdasan emosional, empati, dan kemampuan intropeksi diri. Proses penulisannya melatih komunikasi tertulis yang efektif untuk menyampaikan nilai-nilai kepemimpinan</p>
-                <p><a href="T.Fahreza_PSIK25B_Tugas1.pdf" target="_blank">Lihat Laporan Lengkap (PDF)</a></p>
+                <div class="collapsible-content">
+                    <p>Sebuah esai refleksi pribadi mengenai transformasi pandangan terhadap kepemimpinan, membahas konsep empati, etika, dan komunikasi efektif dalam mempengaruhi tim. Esai ini merefleksikan perkembangan kecerdasan emosional, empati, dan kemampuan intropeksi diri. Proses penulisannya melatih komunikasi tertulis yang efektif untuk menyampaikan nilai-nilai kepemimpinan</p>
+                    <p><a href="T.Fahreza_PSIK25B_Tugas1.pdf" target="_blank">Lihat Laporan Lengkap (PDF)</a></p>
+                </div>
             </article>
             <article>
                 <h3>Tugas Surat Formal Sekolah</h3>
-                <p>Pembuatan surat resmi SMAN 1 Serbajadi yang menunjukkan pemahaman tentang struktur, format, dan bahasa yang tepat dalam korespondensi formal.</p>
-                <p><a href="Surat formal SMA.pdf" target="_blank">Lihat Contoh Surat (PDF)</a></p>
+                <div class="collapsible-content">
+                    <p>Pembuatan surat resmi SMAN 1 Serbajadi yang menunjukkan pemahaman tentang struktur, format, dan bahasa yang tepat dalam korespondensi formal.</p>
+                    <p><a href="Surat formal SMA.pdf" target="_blank">Lihat Contoh Surat (PDF)</a></p>
+                </div>
             </article>
         </section>
 
         <hr>
 
         <section id="contact">
-            <h2><i class="fas fa-address-card"></i> Hubungi Saya</h2>
+            <h2><i class="fas fa-address-card icon-header"></i> Hubungi Saya</h2>
             <ul>
                 <li><i class="fas fa-envelope"></i> Email: <a href="mailto:tengkufahreza6@gmail.com">tengkufahreza6@gmail.com</a></li>
                 <li><i class="fab fa-instagram"></i> Instagram: <a href="https://www.instagram.com/tengku.fahreza.18?igsh=MTRybG9laDNjaWVwdw==">tengku.fahreza.18</a></li>
                 <li><i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/6282267828900">+62 822-6782-8900</a></li>
-                <li><i class="fab fa-facebook"></i> Facebook: <a href="https://www.facebook.com/tengkufahreza.18">tengkufahreza.18</a></li>
+                <li><i class="fab fa-facebook"></i> Facebook: <a href="https://www.facebook.com/tengkufahreza.18">tengku.fahreza.18</a></li>
                 <li><i class="fab fa-tiktok"></i> TikTok: <a href="https://www.tiktok.com/@tengkufahreza779">tengkufahreza779</a></li>
             </ul>
         </section>
+
+        <section id="share-buttons">
+            <h2><i class="fas fa-share-alt icon-header"></i> Bagikan Portofolio Ini</h2>
+            <div class="share-container">
+                <button class="share-button twitter" data-platform="twitter">
+                    <i class="fab fa-twitter"></i> Twitter
+                </button>
+                <button class="share-button whatsapp" data-platform="whatsapp">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </button>
+                <button class="share-button facebook" data-platform="facebook">
+                    <i class="fab fa-facebook"></i> Facebook
+                </button>
+                <button class="share-button email" data-platform="email">
+                    <i class="fas fa-envelope"></i> Email
+                </button>
+            </div>
+        </section>
     </div>
+    
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,12 +1,148 @@
+/* --- SKEMA WARNA COKELAT/MARUN (SESUAI PERMINTAAN) --- */
+:root {
+    /* Warna Mode Terang (Light Mode) */
+    --light-bg-color: #f0f2f5;           /* Latar belakang halaman yang sangat terang */
+    --light-section-bg: #ffffff;         /* Latar belakang kartu/section putih bersih */
+    --light-text-color: #333333;         /* Warna teks utama (hampir hitam) */
+    
+    /* AKSE WARNA COKELAT/MARUN */
+    --light-accent-color: #A52A2A;       /* Warna aksen utama (Cokelat Marun Hangat) */
+    --light-secondary-accent: #8B0000;   /* Warna aksen sekunder (Merah Tua/Burgundy) */
+    
+    --light-border-color: #cccccc;       /* Warna border dan pembatas */
+    
+    /* Warna Mode Gelap (Dark Mode) - PALET DENGAN KONTRAST TINGGI */
+    --dark-bg-color: #121212;            /* Latar belakang halaman yang sangat gelap */
+    --dark-section-bg: #1f1f1f;          /* Latar belakang kartu/section gelap */
+    --dark-text-color: #e0e0e0;          /* Warna teks yang sangat terang (DIJAMIN KONTRAST) */
+
+    /* AKSE WARNA COKELAT/MARUN UNTUK DARK MODE */
+    --dark-accent-color: #CD5C5C;        /* Warna aksen utama (Indian Red - Terang agar kontras) */
+    --dark-secondary-accent: #B22222;    /* Warna aksen sekunder */
+    
+    --dark-border-color: #303030;        /* Warna border gelap */
+}
+
 body {
-    background: linear-gradient(to right, #f5f5dc, #fdf6e3);
+    background-color: var(--light-bg-color);
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    color: #5d4037;
+    color: var(--light-text-color);
+    transition: background 0.5s ease, color 0.5s ease;
     animation: fadeIn 1.5s ease-in-out;
 }
 
+/* DARK MODE STYLES */
+body.dark-mode {
+    background-color: var(--dark-bg-color);
+    color: var(--dark-text-color);
+}
+
+/* PERBAIKAN UTAMA: Selector yang lebih spesifik untuk dark mode */
+body.dark-mode,
+body.dark-mode section,
+body.dark-mode article,
+body.dark-mode section p,
+body.dark-mode article p,
+body.dark-mode section li,
+body.dark-mode article li,
+body.dark-mode section h3,
+body.dark-mode article h3,
+body.dark-mode .collapsible-content,
+body.dark-mode .collapsible-content p,
+body.dark-mode .collapsible-content li,
+body.dark-mode .collapsible-content a,
+body.dark-mode .collapsible-content h3,
+body.dark-mode .collapsible-content h4 {
+    color: var(--dark-text-color) !important;
+}
+
+/* PERBAIKAN TAMBAHAN: Pastikan link di collapsible content tetap terlihat */
+body.dark-mode .collapsible-content a {
+    color: var(--dark-accent-color) !important;
+}
+
+body.dark-mode .collapsible-content a:hover {
+    color: var(--dark-text-color) !important;
+    background-color: var(--dark-accent-color);
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+body.dark-mode h1,
+body.dark-mode h2 {
+    color: var(--dark-text-color); 
+    background-image: none;
+    -webkit-text-fill-color: initial;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode section {
+    background-color: var(--dark-section-bg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode section:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode a {
+    color: var(--dark-accent-color);
+}
+
+body.dark-mode a:hover {
+    color: var(--dark-text-color);
+}
+
+body.dark-mode a::after {
+    background-color: var(--dark-accent-color);
+}
+
+body.dark-mode article {
+    border-color: var(--dark-border-color);
+    background-color: var(--dark-section-bg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode article:hover {
+    border-color: var(--dark-text-color);
+}
+
+body.dark-mode .icon-header {
+    color: var(--dark-accent-color);
+}
+
+body.dark-mode .fas,
+body.dark-mode .fab,
+body.dark-mode .far {
+    color: var(--dark-accent-color);
+}
+
+body.dark-mode .fas:hover, 
+body.dark-mode .fab:hover, 
+body.dark-mode .far:hover {
+    color: var(--dark-text-color);
+}
+
+body.dark-mode .share-button {
+    background-color: var(--dark-secondary-accent);
+}
+
+body.dark-mode .share-button:hover {
+    background-color: var(--dark-accent-color);
+}
+
+body.dark-mode .skill-bar {
+    background: var(--dark-border-color);
+}
+
+/* PERBAIKAN: Border color untuk collapsible content di dark mode */
+body.dark-mode .collapsible-content {
+    border-top-color: var(--dark-border-color) !important;
+}
+
+/* Keyframes for animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -36,6 +172,37 @@ body {
     gap: 20px;
 }
 
+/* Mode Toggle Button */
+#mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--light-accent-color);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1.2em;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#mode-toggle:hover {
+    background-color: var(--light-secondary-accent);
+    transform: scale(1.1);
+}
+
+body.dark-mode #mode-toggle {
+    background-color: var(--dark-accent-color);
+}
+
+body.dark-mode #mode-toggle:hover {
+    background-color: var(--dark-secondary-accent);
+}
+
 header {
     text-align: center;
     padding: 20px;
@@ -47,7 +214,7 @@ header {
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #fff;
+    border: 3px solid var(--light-section-bg); 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.5s ease-in-out, box-shadow 0.3s ease;
 }
@@ -57,11 +224,16 @@ header {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
+body.dark-mode .profile-picture {
+    border-color: var(--dark-section-bg);
+}
+
 h1 {
     font-size: 2.5em;
-    color: #4e342e;
+    color: var(--light-text-color);
     margin-bottom: 5px;
-    background-image: linear-gradient(to right, #6d4c41, #4e342e);
+    /* Menggunakan gradien warna COKELAT */
+    background-image: linear-gradient(to right, var(--light-accent-color), var(--light-secondary-accent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: none;
@@ -70,11 +242,13 @@ h1 {
 }
 
 h2 {
-    color: #6d4c41;
-    border-bottom: 2px solid #d7ccc8;
+    font-size: 1.5em;
+    color: var(--light-text-color);
+    border-bottom: 2px solid var(--light-border-color);
     padding-bottom: 5px;
     margin-bottom: 15px;
-    background-image: linear-gradient(to right, #8d6e63, #6d4c41);
+    /* Menggunakan gradien warna COKELAT */
+    background-image: linear-gradient(to right, var(--light-accent-color), var(--light-secondary-accent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: none;
@@ -82,12 +256,24 @@ h2 {
     animation-fill-mode: forwards;
 }
 
+body.dark-mode h2 {
+    border-bottom-color: var(--dark-border-color);
+}
+
 section {
-    background-color: #fff8f5;
+    background-color: var(--light-section-bg);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-left 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 section:hover {
@@ -96,17 +282,25 @@ section:hover {
 }
 
 section#about p {
-    border-left: 4px solid #8d6e63;
+    border-left: 4px solid var(--light-accent-color);
     padding-left: 15px;
     border-radius: 2px;
+}
+
+body.dark-mode section#about p {
+    border-left-color: var(--dark-accent-color);
 }
 
 ul {
     list-style-type: none;
     padding: 0;
-    border-left: 4px solid #8d6e63;
+    border-left: 4px solid var(--light-accent-color);
     padding-left: 15px;
     border-radius: 2px;
+}
+
+body.dark-mode ul {
+    border-left-color: var(--dark-accent-color);
 }
 
 li {
@@ -114,14 +308,14 @@ li {
 }
 
 a {
-    color: #a1887f;
+    color: var(--light-accent-color);
     text-decoration: none;
     position: relative;
     transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #5d4037;
+    color: var(--light-secondary-accent);
 }
 
 a::after {
@@ -131,7 +325,7 @@ a::after {
     height: 2px;
     bottom: -3px;
     left: 0;
-    background-color: #8d6e63;
+    background-color: var(--light-accent-color);
     visibility: hidden;
     transform: scaleX(0);
     transition: all 0.3s ease-in-out 0s;
@@ -142,43 +336,204 @@ a:hover::after {
     transform: scaleX(1);
 }
 
-article {
-    border-left: 4px solid #8d6e63;
-    padding-left: 15px;
-    margin-bottom: 20px;
-    border-radius: 2px;
+/* Modifikasi Article untuk Collapsible */
+section.collapsible-group article {
+    background-color: var(--light-section-bg);
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border-left: 5px solid var(--light-accent-color);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-article h3 {
-    margin-top: 0;
-    color: #4e342e;
+section.collapsible-group article h3 {
+    margin: 0;
+    color: var(--light-text-color);
+    padding-right: 30px; 
+    cursor: pointer; 
+    position: relative;
+}
+
+section.collapsible-group article:hover {
+    border-color: var(--light-secondary-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+body.dark-mode section.collapsible-group article {
+    background-color: var(--dark-section-bg);
+    border-left-color: var(--dark-accent-color);
+}
+
+body.dark-mode section.collapsible-group article:hover {
+    border-color: var(--dark-text-color);
+}
+
+/* Ikon +/- untuk Collapsible */
+section.collapsible-group article h3::after {
+    content: '\002B';
+    color: var(--light-secondary-accent);
+    font-size: 1.2em;
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+}
+
+body.dark-mode section.collapsible-group article h3::after {
+    color: var(--dark-accent-color);
+}
+
+section.collapsible-group article.active h3::after {
+    content: '\2212';
+}
+
+/* Menyembunyikan konten secara default */
+.collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    padding: 0 0; 
+}
+
+/* Menampilkan konten saat aktif */
+section.collapsible-group article.active .collapsible-content {
+    max-height: 500px; 
+    padding-top: 15px;
+    border-top: 1px solid var(--light-border-color);
+    margin-top: 10px;
+}
+
+body.dark-mode section.collapsible-group article.active .collapsible-content {
+    border-top-color: var(--dark-border-color);
 }
 
 hr {
     border: 0;
     height: 1px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #a1887f, rgba(0, 0, 0, 0));
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--light-border-color), rgba(0, 0, 0, 0));
     margin: 20px 0;
 }
 
-/* Styling untuk Ikon */
+body.dark-mode hr {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--dark-border-color), rgba(0, 0, 0, 0));
+}
+
+/* Styling untuk Ikon Umum */
 .fas, .fab, .far {
     margin-right: 8px;
-    color: #a1887f;
+    color: var(--light-accent-color);
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .fas:hover, .fab:hover, .far:hover {
-    color: #5d4037;
-    transform: scale(1.2);
+    color: var(--light-secondary-accent);
+    transform: scale(1.2) rotate(10deg);
 }
 
-h2 .fas, h2 .fab, h2 .far {
-    color: #4e342e;
+/* KODE PERBAIKAN ROTASI IKON - Berfungsi di Light Mode */
+.icon-header {
     transform: none;
+    transition: transform 0.4s ease, color 0.3s ease;
+    color: var(--light-secondary-accent);
+    display: inline-block;
 }
 
-/* Media Query untuk layar HP */
+h2:hover .icon-header {
+    transform: rotate(360deg) scale(1.1);
+    color: var(--light-accent-color);
+}
+
+/* KODE PERBAIKAN ROTASI IKON - Berfungsi di Dark Mode */
+body.dark-mode h2:hover .icon-header {
+    transform: rotate(360deg) scale(1.1);
+    color: var(--dark-text-color);
+}
+
+/* KODE SKILL BAR */
+.skill-bar-container p { 
+    margin: 10px 0 5px 0; 
+    font-weight: 600; 
+}
+
+.skill-bar {
+    background: var(--light-border-color);
+    border-radius: 10px;
+    height: 15px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+body.dark-mode .skill-bar {
+    background: var(--dark-border-color);
+}
+
+.skill-level {
+    height: 100%;
+    /* Menggunakan gradien warna COKELAT */
+    background: linear-gradient(to right, var(--light-accent-color), var(--light-secondary-accent));
+    border-radius: 10px;
+    transition: width 1s ease-out;
+    position: relative;
+}
+
+body.dark-mode .skill-level {
+    background: linear-gradient(to right, var(--dark-accent-color), var(--dark-secondary-accent));
+}
+
+.skill-level::after {
+    content: attr(data-level); 
+    position: absolute; 
+    top: -5px; 
+    right: 5px;
+    color: #fff; 
+    font-size: 0.7em; 
+    font-weight: 700; 
+    opacity: 0; 
+    transition: opacity 0.5s;
+}
+
+.skill-bar:hover .skill-level::after { 
+    opacity: 1; 
+}
+
+/* Tombol berbagi */
+.share-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.share-button {
+    background-color: var(--light-accent-color);
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.share-button:hover {
+    background-color: var(--light-secondary-accent);
+    transform: translateY(-2px);
+}
+
+.share-button i {
+    margin-right: 8px;
+    color: #fff;
+}
+
+/* ================== MEDIA QUERIES ================== */
+
 @media (max-width: 600px) {
     .container {
         grid-template-columns: 1fr;
@@ -198,50 +553,9 @@ h2 .fas, h2 .fab, h2 .far {
         width: 120px;
         height: 120px;
     }
-}
 
-/* Tambahan: Media Query untuk layar desktop/tablet */
-@media (min-width: 768px) {
-    .container {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-areas:
-            "header header"
-            "about about"
-            "education organization"
-            "skills certifications"
-            "projects projects"
-            "contact contact";
-    }
-
-    header {
-        grid-area: header;
-    }
-
-    #about {
-        grid-area: about;
-    }
-
-    #education {
-        grid-area: education;
-    }
-
-    #organization {
-        grid-area: organization;
-    }
-
-    #skills {
-        grid-area: skills;
-    }
-
-    #certifications {
-        grid-area: certifications;
-    }
-
-    #projects {
-        grid-area: projects;
-    }
-
-    #contact {
-        grid-area: contact;
+    .share-container {
+        flex-direction: column;
+        gap: 10px;
     }
 }
