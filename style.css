@@ -399,9 +399,10 @@ section.collapsible-group article.active h3::after {
     padding: 0 0; 
 }
 
-/* Menampilkan konten saat aktif */
+/* PERBAIKAN KRITIS: Ganti max-height fixed dengan auto untuk desktop */
 section.collapsible-group article.active .collapsible-content {
-    max-height: 500px; 
+    max-height: none; /* ⬅️ INI PERBAIKAN UTAMA - ganti dari 500px */
+    height: auto;     /* ⬅️ Biarkan konten menentukan tinggi sendiri */
     padding-top: 15px;
     border-top: 1px solid var(--light-border-color);
     margin-top: 10px;
@@ -557,5 +558,45 @@ body.dark-mode .skill-level {
     .share-container {
         flex-direction: column;
         gap: 10px;
+    }
+
+    /* PERBAIKAN KHUSUS UNTUK MOBILE: Pastikan collapsible content terbuka sempurna */
+    section.collapsible-group article.active .collapsible-content {
+        max-height: none !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+    
+    /* PERBAIKAN LINK PDF DI MOBILE - biar lebih jelas */
+    section.collapsible-group article .collapsible-content a {
+        display: inline-block !important;
+        padding: 10px 16px !important;
+        margin: 15px 0 10px 0 !important;
+        background-color: var(--light-accent-color) !important;
+        color: white !important;
+        border-radius: 8px !important;
+        font-weight: 600 !important;
+        border: 2px solid transparent !important;
+        text-decoration: none !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    body.dark-mode section.collapsible-group article .collapsible-content a {
+        background-color: var(--dark-accent-color) !important;
+        color: var(--dark-text-color) !important;
+        border-color: var(--dark-border-color) !important;
+    }
+    
+    section.collapsible-group article .collapsible-content a:hover {
+        background-color: var(--light-secondary-accent) !important;
+        transform: translateY(-2px) !important;
+    }
+    
+    /* Pastikan teks di collapsible terbaca */
+    section.collapsible-group article .collapsible-content p {
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 15px;
+        text-align: left;
     }
 }
