@@ -4,12 +4,36 @@ body {
     margin: 0;
     padding: 0;
     color: #5d4037;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .container {
     max-width: 800px;
     margin: 40px auto;
     padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
 }
 
 header {
@@ -24,13 +48,25 @@ header {
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease-in-out, box-shadow 0.3s ease;
+}
+
+.profile-picture:hover {
+    transform: scale(1.05) rotate(5deg);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 h1 {
     font-size: 2.5em;
     color: #4e342e;
     margin-bottom: 5px;
+    background-image: linear-gradient(to right, #6d4c41, #4e342e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+    animation: slideInFromLeft 1s ease-out;
+    animation-fill-mode: forwards;
 }
 
 h2 {
@@ -38,25 +74,31 @@ h2 {
     border-bottom: 2px solid #d7ccc8;
     padding-bottom: 5px;
     margin-bottom: 15px;
+    background-image: linear-gradient(to right, #8d6e63, #6d4c41);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+    animation: slideInFromLeft 1s ease-out;
+    animation-fill-mode: forwards;
 }
 
 section {
     background-color: #fff8f5;
     padding: 20px;
-    margin-bottom: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 section#about p {
     border-left: 4px solid #8d6e63;
     padding-left: 15px;
+    border-radius: 2px;
 }
 
 ul {
@@ -64,6 +106,7 @@ ul {
     padding: 0;
     border-left: 4px solid #8d6e63;
     padding-left: 15px;
+    border-radius: 2px;
 }
 
 li {
@@ -73,18 +116,37 @@ li {
 a {
     color: #a1887f;
     text-decoration: none;
+    position: relative;
     transition: color 0.3s ease;
 }
 
 a:hover {
-    text-decoration: underline;
     color: #5d4037;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -3px;
+    left: 0;
+    background-color: #8d6e63;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+}
+
+a:hover::after {
+    visibility: visible;
+    transform: scaleX(1);
 }
 
 article {
     border-left: 4px solid #8d6e63;
     padding-left: 15px;
     margin-bottom: 20px;
+    border-radius: 2px;
 }
 
 article h3 {
@@ -92,7 +154,6 @@ article h3 {
     color: #4e342e;
 }
 
-/* Garis hiasan untuk elemen penting */
 hr {
     border: 0;
     height: 1px;
@@ -100,9 +161,27 @@ hr {
     margin: 20px 0;
 }
 
+/* Styling untuk Ikon */
+.fas, .fab, .far {
+    margin-right: 8px;
+    color: #a1887f;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.fas:hover, .fab:hover, .far:hover {
+    color: #5d4037;
+    transform: scale(1.2);
+}
+
+h2 .fas, h2 .fab, h2 .far {
+    color: #4e342e;
+    transform: none;
+}
+
 /* Media Query untuk layar HP */
 @media (max-width: 600px) {
     .container {
+        grid-template-columns: 1fr;
         margin: 20px;
         padding: 10px;
     }
@@ -118,5 +197,51 @@ hr {
     .profile-picture {
         width: 120px;
         height: 120px;
+    }
+}
+
+/* Tambahan: Media Query untuk layar desktop/tablet */
+@media (min-width: 768px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas:
+            "header header"
+            "about about"
+            "education organization"
+            "skills certifications"
+            "projects projects"
+            "contact contact";
+    }
+
+    header {
+        grid-area: header;
+    }
+
+    #about {
+        grid-area: about;
+    }
+
+    #education {
+        grid-area: education;
+    }
+
+    #organization {
+        grid-area: organization;
+    }
+
+    #skills {
+        grid-area: skills;
+    }
+
+    #certifications {
+        grid-area: certifications;
+    }
+
+    #projects {
+        grid-area: projects;
+    }
+
+    #contact {
+        grid-area: contact;
     }
 }
