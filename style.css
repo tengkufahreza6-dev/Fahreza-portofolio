@@ -657,6 +657,20 @@ body.dark-mode .skill-level {
 .share-button i {
     margin-right: 8px;
     color: #fff;
+}/* PERBAIKAN: Ikon share buttons di dark mode */
+body.dark-mode .share-button i {
+    color: var(--dark-text-color) !important;
+}
+
+body.dark-mode .share-button:hover i {
+    color: var(--dark-bg-color) !important;
+}
+body.dark-mode .share-button {
+    color: var(--dark-text-color) !important;
+}
+
+body.dark-mode .share-button:hover {
+    color: var(--dark-bg-color) !important;
 }
 
 body.dark-mode .share-button {
