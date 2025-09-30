@@ -202,12 +202,19 @@ body.dark-mode #mode-toggle {
 
 body.dark-mode #mode-toggle:hover {
     background-color: var(--dark-hover-color);
+    transform:scale(1.1);
+}
+body.dark-mode #mode-toggle:hover {
+    background-color: var(--dark-hover-color);
 }
 
 /* PERBAIKAN: Pastikan ikon toggle selalu terlihat dan berwarna putih */
 #mode-toggle i {
     color: white !important;
     transition: transform 0.3s ease;
+}
+body.dark-mode #mode-toggle:hover .fa-sun {
+    color: var(--dark-bg-color) !important;
 }
 
 /* PERBAIKAN: Force ikon untuk selalu visible */
@@ -246,7 +253,7 @@ h1 {
     font-size: 2.5em;
     color: var(--light-text-color);
     margin-bottom: 5px;
-    /* Menggunakan gradien warna COKELAT */
+    
     background-image: linear-gradient(to right, var(--light-accent-color), var(--light-secondary-accent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -261,7 +268,7 @@ h2 {
     border-bottom: 2px solid var(--light-border-color);
     padding-bottom: 5px;
     margin-bottom: 15px;
-    /* Menggunakan gradien warna COKELAT */
+    
     background-image: linear-gradient(to right, var(--light-accent-color), var(--light-secondary-accent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -300,7 +307,6 @@ section:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* PERBAIKAN: Border hover untuk SEMUA SECTION - SEIMBANG DI KEDUA MODE */
 section:hover {
     border-left-color: var(--light-hover-color) !important;
 }
