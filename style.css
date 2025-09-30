@@ -419,12 +419,24 @@ section.collapsible-group article.active h3::after {
     content: '\2212';
 }
 
-/* Menyembunyikan konten secara default */
+/* Animasi collapsible yang lebih smooth */
 .collapsible-content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease-out;
-    padding: 0 0; 
+    transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+                padding 0.4s ease,
+                opacity 0.3s ease;
+    padding: 0;
+    opacity: 0;
+}
+
+section.collapsible-group article.active .collapsible-content {
+    max-height: 1000px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    opacity: 1;
+    border-top: 1px solid var(--light-border-color);
+    margin-top: 10px;
 }
 
 /* PERBAIKAN KRITIS: Ganti max-height fixed dengan auto untuk desktop */
