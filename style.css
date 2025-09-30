@@ -1,26 +1,28 @@
-/* --- SKEMA WARNA COKELAT/MARUN (SESUAI PERMINTAAN) --- */
+/* --- SKEMA WARNA COKELAT/MARUN YANG LEBIH BAIK --- */
 :root {
     /* Warna Mode Terang (Light Mode) */
-    --light-bg-color: #f0f2f5;           /* Latar belakang halaman yang sangat terang */
-    --light-section-bg: #ffffff;         /* Latar belakang kartu/section putih bersih */
-    --light-text-color: #333333;         /* Warna teks utama (hampir hitam) */
+    --light-bg-color: #f8f5f2;           /* Latar belakang cream hangat */
+    --light-section-bg: #ffffff;         /* Latar belakang kartu putih */
+    --light-text-color: #2c2c2c;         /* Warna teks soft black */
     
     /* AKSE WARNA COKELAT/MARUN */
-    --light-accent-color: #A52A2A;       /* Warna aksen utama (Cokelat Marun Hangat) */
-    --light-secondary-accent: #8B0000;   /* Warna aksen sekunder (Merah Tua/Burgundy) */
+    --light-accent-color: #A52A2A;       /* Warna aksen utama (Cokelat Marun) */
+    --light-secondary-accent: #8B4513;   /* Warna aksen sekunder (Saddle Brown) */
+    --light-hover-color: #8B0000;        /* Warna hover (Dark Red) */
     
-    --light-border-color: #cccccc;       /* Warna border dan pembatas */
+    --light-border-color: #d6c6b8;       /* Warna border soft brown */
     
-    /* Warna Mode Gelap (Dark Mode) - PALET DENGAN KONTRAST TINGGI */
-    --dark-bg-color: #121212;            /* Latar belakang halaman yang sangat gelap */
-    --dark-section-bg: #1f1f1f;          /* Latar belakang kartu/section gelap */
-    --dark-text-color: #e0e0e0;          /* Warna teks yang sangat terang (DIJAMIN KONTRAST) */
-
+    /* Warna Mode Gelap (Dark Mode) */
+    --dark-bg-color: #1a1a1a;            /* Latar belakang dark gray */
+    --dark-section-bg: #2d2d2d;          /* Latar belakang kartu dark */
+    --dark-text-color: #e8e8e8;          /* Warna teks soft white */
+    
     /* AKSE WARNA COKELAT/MARUN UNTUK DARK MODE */
-    --dark-accent-color: #CD5C5C;        /* Warna aksen utama (Indian Red - Terang agar kontras) */
-    --dark-secondary-accent: #B22222;    /* Warna aksen sekunder */
+    --dark-accent-color: #CD5C5C;        /* Warna aksen utama (Indian Red) */
+    --dark-secondary-accent: #B22222;    /* Warna aksen sekunder (Fire Brick) */
+    --dark-hover-color: #ffffff;         /* Warna hover (Putih) */
     
-    --dark-border-color: #303030;        /* Warna border gelap */
+    --dark-border-color: #444444;        /* Warna border dark */
 }
 
 body {
@@ -109,10 +111,6 @@ body.dark-mode article:hover {
     border-color: var(--dark-text-color);
 }
 
-body.dark-mode .icon-header {
-    color: var(--dark-accent-color);
-}
-
 body.dark-mode .fas,
 body.dark-mode .fab,
 body.dark-mode .far {
@@ -172,7 +170,7 @@ body.dark-mode .collapsible-content {
     gap: 20px;
 }
 
-/* Mode Toggle Button */
+/* PERBAIKAN KRITIS: Mode Toggle Button dengan ikon yang benar */
 #mode-toggle {
     position: fixed;
     top: 20px;
@@ -188,10 +186,13 @@ body.dark-mode .collapsible-content {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #mode-toggle:hover {
-    background-color: var(--light-secondary-accent);
+    background-color: var(--light-hover-color);
     transform: scale(1.1);
 }
 
@@ -200,7 +201,20 @@ body.dark-mode #mode-toggle {
 }
 
 body.dark-mode #mode-toggle:hover {
-    background-color: var(--dark-secondary-accent);
+    background-color: var(--dark-hover-color);
+}
+
+/* PERBAIKAN: Pastikan ikon toggle selalu terlihat dan berwarna putih */
+#mode-toggle i {
+    color: white !important;
+    transition: transform 0.3s ease;
+}
+
+/* PERBAIKAN: Force ikon untuk selalu visible */
+.fa-moon, .fa-sun {
+    display: inline-block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 header {
@@ -268,6 +282,7 @@ section {
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-left 0.3s ease;
     opacity: 0;
     transform: translateY(20px);
+    border-left: 4px solid var(--light-accent-color);
 }
 
 section.visible {
@@ -276,9 +291,22 @@ section.visible {
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
+body.dark-mode section {
+    border-left: 4px solid var(--dark-accent-color);
+}
+
 section:hover {
     transform: translateY(-5px) scale(1.01);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* PERBAIKAN: Border hover untuk SEMUA SECTION - SEIMBANG DI KEDUA MODE */
+section:hover {
+    border-left-color: var(--light-hover-color) !important;
+}
+
+body.dark-mode section:hover {
+    border-left-color: var(--dark-hover-color) !important;
 }
 
 section#about p {
@@ -315,7 +343,7 @@ a {
 }
 
 a:hover {
-    color: var(--light-secondary-accent);
+    color: var(--light-hover-color);
 }
 
 a::after {
@@ -356,7 +384,7 @@ section.collapsible-group article h3 {
 }
 
 section.collapsible-group article:hover {
-    border-color: var(--light-secondary-accent);
+    border-color: var(--light-hover-color);
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
@@ -367,7 +395,7 @@ body.dark-mode section.collapsible-group article {
 }
 
 body.dark-mode section.collapsible-group article:hover {
-    border-color: var(--dark-text-color);
+    border-color: var(--dark-hover-color);
 }
 
 /* Ikon +/- untuk Collapsible */
@@ -384,7 +412,7 @@ section.collapsible-group article h3::after {
 }
 
 body.dark-mode section.collapsible-group article h3::after {
-    color: var(--dark-accent-color);
+    color: var(--dark-secondary-accent);
 }
 
 section.collapsible-group article.active h3::after {
@@ -401,8 +429,8 @@ section.collapsible-group article.active h3::after {
 
 /* PERBAIKAN KRITIS: Ganti max-height fixed dengan auto untuk desktop */
 section.collapsible-group article.active .collapsible-content {
-    max-height: none; /* ⬅️ INI PERBAIKAN UTAMA - ganti dari 500px */
-    height: auto;     /* ⬅️ Biarkan konten menentukan tinggi sendiri */
+    max-height: none;
+    height: auto;
     padding-top: 15px;
     border-top: 1px solid var(--light-border-color);
     margin-top: 10px;
@@ -431,27 +459,126 @@ body.dark-mode hr {
 }
 
 .fas:hover, .fab:hover, .far:hover {
-    color: var(--light-secondary-accent);
+    color: var(--light-hover-color);
     transform: scale(1.2) rotate(10deg);
 }
 
-/* KODE PERBAIKAN ROTASI IKON - Berfungsi di Light Mode */
+body.dark-mode .fas,
+body.dark-mode .fab,
+body.dark-mode .far {
+    color: var(--dark-accent-color);
+}
+
+body.dark-mode .fas:hover, 
+body.dark-mode .fab:hover, 
+body.dark-mode .far:hover {
+    color: var(--dark-hover-color);
+}
+
+/* PERBAIKAN KRITIS: Icon Header yang work di kedua mode */
 .icon-header {
     transform: none;
     transition: transform 0.4s ease, color 0.3s ease;
-    color: var(--light-secondary-accent);
+    color: var(--light-secondary-accent) !important;
     display: inline-block;
 }
 
 h2:hover .icon-header {
     transform: rotate(360deg) scale(1.1);
-    color: var(--light-accent-color);
+    color: var(--light-hover-color) !important;
 }
 
-/* KODE PERBAIKAN ROTASI IKON - Berfungsi di Dark Mode */
+/* Dark Mode Styles untuk Icon Header */
+body.dark-mode .icon-header {
+    color: var(--dark-secondary-accent) !important;
+}
+
 body.dark-mode h2:hover .icon-header {
     transform: rotate(360deg) scale(1.1);
-    color: var(--dark-text-color);
+    color: var(--dark-hover-color) !important;
+}
+
+/* ================== GRID LAYOUT UNTUK SKILLS ================== */
+
+/* Container untuk grid skills */
+.skills-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+/* Style untuk masing-masing skill box */
+.skill-box {
+    background-color: var(--light-section-bg);
+    padding: 25px;
+    border-radius: 10px;
+    border-left: 5px solid var(--light-accent-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    height: fit-content;
+}
+
+.skill-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border-left-color: var(--light-hover-color) !important;
+}
+
+/* Dark mode untuk skill box */
+body.dark-mode .skill-box {
+    background-color: var(--dark-section-bg);
+    border-left-color: var(--dark-accent-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .skill-box:hover {
+    border-left-color: var(--dark-hover-color) !important;
+}
+
+/* Header untuk skill box */
+.skill-box h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--light-border-color);
+    padding-bottom: 10px;
+    font-size: 1.3em;
+}
+
+body.dark-mode .skill-box h3 {
+    border-bottom-color: var(--dark-border-color);
+}
+
+/* Skill bars dalam grid */
+.skill-box .skill-bar-container {
+    margin-top: 15px;
+}
+
+.skill-box .skill-bar-container p {
+    margin: 12px 0 6px 0;
+    font-weight: 600;
+}
+
+/* List dalam softskill box */
+.skill-box ul {
+    border-left: none;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+.skill-box li {
+    margin-bottom: 12px;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--light-border-color);
+}
+
+body.dark-mode .skill-box li {
+    border-bottom-color: var(--dark-border-color);
+}
+
+.skill-box li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
 }
 
 /* KODE SKILL BAR */
@@ -475,7 +602,6 @@ body.dark-mode .skill-bar {
 
 .skill-level {
     height: 100%;
-    /* Menggunakan gradien warna COKELAT */
     background: linear-gradient(to right, var(--light-accent-color), var(--light-secondary-accent));
     border-radius: 10px;
     transition: width 1s ease-out;
@@ -524,13 +650,21 @@ body.dark-mode .skill-level {
 }
 
 .share-button:hover {
-    background-color: var(--light-secondary-accent);
+    background-color: var(--light-hover-color);
     transform: translateY(-2px);
 }
 
 .share-button i {
     margin-right: 8px;
     color: #fff;
+}
+
+body.dark-mode .share-button {
+    background-color: var(--dark-accent-color);
+}
+
+body.dark-mode .share-button:hover {
+    background-color: var(--dark-hover-color);
 }
 
 /* ================== MEDIA QUERIES ================== */
@@ -588,7 +722,7 @@ body.dark-mode .skill-level {
     }
     
     section.collapsible-group article .collapsible-content a:hover {
-        background-color: var(--light-secondary-accent) !important;
+        background-color: var(--light-hover-color) !important;
         transform: translateY(-2px) !important;
     }
     
@@ -598,5 +732,19 @@ body.dark-mode .skill-level {
         line-height: 1.6;
         margin-bottom: 15px;
         text-align: left;
+    }
+
+    /* GRID LAYOUT UNTUK MOBILE */
+    .skills-grid-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .skill-box {
+        padding: 20px;
+    }
+    
+    .skill-box h3 {
+        font-size: 1.2em;
     }
 }
